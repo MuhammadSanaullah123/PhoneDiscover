@@ -30,6 +30,12 @@ const Login = () => {
     console.log("access token", response.data.access_token);
     navigate("/home");
   };
+  useEffect(() => {
+    if (localStorage.getItem("access_token")) {
+      navigate("/home");
+    }
+  }, []);
+
   return (
     <div id="login">
       <div id="parentDiv">
@@ -39,7 +45,7 @@ const Login = () => {
           name="name"
           value={userData.name}
           onChange={handleChange}
-          placeholder="Email"
+          placeholder="Username"
           startAdornment={
             <InputAdornment position="start">
               <PersonIcon />

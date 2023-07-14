@@ -1,5 +1,5 @@
 import React from "react";
-
+import moment from "moment";
 //mui
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -44,7 +44,9 @@ const rows = [
   createData(12, 159, 6.0, 24, 4.0, 5, 1, 9, 3),
 ];
 
-const PhoneTable = () => {
+const PhoneTable = ({ callData }) => {
+  console.log("callData in table comp", callData);
+
   return (
     <div>
       <TableContainer component={Paper}>
@@ -81,20 +83,82 @@ const PhoneTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row, index) => (
+            {callData.map((call, index) => (
               <TableRow
                 key={index}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell align="center">{row.type}</TableCell>
-                <TableCell align="center">{row.direction}</TableCell>
-                <TableCell align="center">{row.duration}</TableCell>
-                <TableCell align="center">{row.from}</TableCell>
-                <TableCell align="center">{row.to}</TableCell>
-                <TableCell align="center">{row.via}</TableCell>
-                <TableCell align="center">{row.created}</TableCell>
-                <TableCell align="center">{row.status}</TableCell>
-                <TableCell align="center">{row.actions}</TableCell>
+                <TableCell
+                  style={{
+                    color: `${
+                      call.call_type == "answered"
+                        ? "#4bd4c6"
+                        : call.call_type == "missed"
+                        ? "#d13e5a"
+                        : "#325ae7"
+                    }`,
+                  }}
+                  className="individualCell"
+                  align="center"
+                >
+                  {call.call_type}
+                </TableCell>
+                <TableCell
+                  style={{
+                    color: "#325ae7",
+                  }}
+                  className="individualCell"
+                  align="center"
+                >
+                  {call.direction}
+                </TableCell>
+                <TableCell className="durationp" align="center">
+                  {call.duration.minutes} minutes {call.duration.seconds}{" "}
+                  seconds
+                  <br />
+                  <p
+                    style={{
+                      color: "#325ae7",
+                    }}
+                  >
+                    {" "}
+                    {`(${call.duration.originalDuration}) seconds`}
+                  </p>
+                </TableCell>
+                <TableCell className="durationp" align="center">
+                  {call.from}
+                </TableCell>
+                <TableCell className="durationp" align="center">
+                  {call.to}
+                </TableCell>
+                <TableCell className="durationp" align="center">
+                  {call.via}
+                </TableCell>
+                <TableCell className="durationp" align="center">
+                  {moment(call.created_at).format("MM-DD-YYYY")}
+                </TableCell>
+                <TableCell align="center">
+                  <div
+                    className="durationp "
+                    style={{
+                      backgroundColor: `${
+                        call.is_archived == true ? "#eeeeee" : "#edfbfa"
+                      }`,
+                      color: `${
+                        call.is_archived == true ? "#727272" : "#1dc9b7"
+                      }`,
+                      padding: "4px",
+                    }}
+                  >
+                    <p className="durationp ">
+                      {call.is_archived ? "Unarchive" : "Archive"}
+                    </p>
+                  </div>
+                </TableCell>
+                <TableCell align="center">
+                  {" "}
+                  <Button variant="contained">Add Note</Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

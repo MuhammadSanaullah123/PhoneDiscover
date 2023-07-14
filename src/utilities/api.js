@@ -12,3 +12,27 @@ export const login = async (name, password) => {
     console.error(error);
   }
 };
+
+export const getCalls = async () => {
+  try {
+    return await axios.get(`${base_url}/calls`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getCallsCustom = async (offset) => {
+  try {
+    return await axios.get(`${base_url}/calls?offset=${offset}&limit=10`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
