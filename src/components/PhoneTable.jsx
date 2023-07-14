@@ -44,7 +44,21 @@ const rows = [
   createData(12, 159, 6.0, 24, 4.0, 5, 1, 9, 3),
 ];
 
-const PhoneTable = ({ callData }) => {
+const PhoneTable = ({ callData, handleArchive, handleModal }) => {
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   console.log("callData in table comp", callData);
 
   return (
@@ -121,7 +135,6 @@ const PhoneTable = ({ callData }) => {
                       color: "#325ae7",
                     }}
                   >
-                    {" "}
                     {`(${call.duration.originalDuration}) seconds`}
                   </p>
                 </TableCell>
@@ -139,6 +152,7 @@ const PhoneTable = ({ callData }) => {
                 </TableCell>
                 <TableCell align="center">
                   <div
+                    onClick={() => handleArchive(call.id)}
                     className="durationp "
                     style={{
                       backgroundColor: `${
@@ -151,13 +165,15 @@ const PhoneTable = ({ callData }) => {
                     }}
                   >
                     <p className="durationp ">
-                      {call.is_archived ? "Unarchive" : "Archive"}
+                      {call.is_archived ? "Archived" : "Unarchive"}
                     </p>
                   </div>
                 </TableCell>
                 <TableCell align="center">
                   {" "}
-                  <Button variant="contained">Add Note</Button>
+                  <Button onClick={() => handleModal(call)} variant="contained">
+                    Add Note
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}

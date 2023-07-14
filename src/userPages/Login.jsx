@@ -9,7 +9,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import LockIcon from "@mui/icons-material/Lock";
 
 //api
-import { login } from "../utilities/api";
+import { login, refreshToken } from "../utilities/api";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,13 +22,21 @@ const Login = () => {
     const Value = e.target.value;
     setUserData({ ...userData, [e.target.name]: Value });
   };
-
+  const handleRefresh = async () => {
+    const response = await refreshToken();
+    localStorage.setItem("access_token", response.data.access_token);
+  };
   const handleSubmit = async () => {
     const response = await login(userData.name, userData.password);
+    console.log(response);
     localStorage.setItem("access_token", response.data.access_token);
-    /*   localStorage.setItem("refresh_token",response.data.refresh_token) */
-    console.log("access token", response.data.access_token);
+    localStorage.setItem("refresh_token", response.data.refresh_token);
+
     navigate("/home");
+
+    const timeoutID = setTimeout(() => {
+      handleRefresh();
+    }, 540000);
   };
   useEffect(() => {
     if (localStorage.getItem("access_token")) {

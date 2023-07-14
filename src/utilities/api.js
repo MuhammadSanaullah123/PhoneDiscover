@@ -12,6 +12,21 @@ export const login = async (name, password) => {
     console.error(error);
   }
 };
+export const refreshToken = async () => {
+  try {
+    return await axios.post(
+      `${base_url}/auth/refresh-token`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 export const getCalls = async () => {
   try {
@@ -32,6 +47,38 @@ export const getCallsCustom = async (offset) => {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
     });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const changeStatus = async (id) => {
+  try {
+    return await axios.put(
+      `${base_url}/calls/${id}/archive`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const addNote = async (id, note) => {
+  try {
+    return await axios.post(
+      `${base_url}/calls/${id}/note`,
+      { content: note },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
+    );
   } catch (error) {
     console.error(error);
   }
