@@ -68,7 +68,6 @@ const Home = () => {
     });
 
     setCallData([...temp]);
-    console.log("calls", response);
   };
 
   const handleCustomCalls = async (e, page) => {
@@ -93,7 +92,6 @@ const Home = () => {
     });
 
     setCallData([...temp]);
-    console.log("calls", response);
   };
   const handleArchive = async (id) => {
     let response = await changeStatus(id);
@@ -147,7 +145,7 @@ const Home = () => {
   useEffect(() => {
     handleCalls();
   }, []);
-  console.log("note call is ", noteCall);
+
   return (
     <div id="home">
       <p id="mainp">Turing Technologies Frontend Test</p>

@@ -24,26 +24,6 @@ function createData(
   return { type, direction, duration, from, to, via, created, status, actions };
 }
 
-const rows = [
-  createData(
-    12,
-    159,
-    6.0,
-    24,
-    4.0,
-    5,
-    1,
-    9,
-    <>
-      <Button variant="contained">Add Note</Button>
-    </>
-  ),
-  createData(12, 159, 6.0, 24, 4.0, 5, 1, 9, 3),
-  createData(12, 159, 6.0, 24, 4.0, 5, 1, 9, 3),
-  createData(12, 159, 6.0, 24, 4.0, 5, 1, 9, 3),
-  createData(12, 159, 6.0, 24, 4.0, 5, 1, 9, 3),
-];
-
 const PhoneTable = ({ callData, handleArchive, handleModal }) => {
   const style = {
     position: "absolute",
@@ -57,9 +37,6 @@ const PhoneTable = ({ callData, handleArchive, handleModal }) => {
     p: 4,
   };
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  console.log("callData in table comp", callData);
 
   return (
     <div>

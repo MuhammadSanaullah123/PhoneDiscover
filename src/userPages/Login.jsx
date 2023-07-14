@@ -28,7 +28,7 @@ const Login = () => {
   };
   const handleSubmit = async () => {
     const response = await login(userData.name, userData.password);
-    console.log(response);
+
     localStorage.setItem("access_token", response.data.access_token);
     localStorage.setItem("refresh_token", response.data.refresh_token);
 
