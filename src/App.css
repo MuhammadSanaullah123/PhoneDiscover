@@ -1,0 +1,107 @@
+#root {
+  /*  max-width: 1280px; */
+  margin: 0 auto;
+  overflow: hidden;
+}
+@font-face {
+  font-family: "ABlack";
+  src: url("./fonts/AvenirLTStd-Black.otf") format("opentype");
+}
+@font-face {
+  font-family: "ABook";
+  src: url("./fonts/AvenirLTStd-Book.otf") format("opentype");
+}
+@font-face {
+  font-family: "ARoman";
+  src: url("./fonts/AvenirLTStd-Roman.otf") format("opentype");
+}
+
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.47);
+  padding: 20px 10px 10px 10px;
+}
+#navbar img {
+  height: 35px;
+}
+Button {
+  height: 40px;
+  text-transform: none;
+  font-family: "ARoman";
+  width: 110px;
+}
+#login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 80px);
+  background-color: #f3eeee;
+}
+#login #parentDiv {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 300px;
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 20px 20px 20px 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+#parentDiv p {
+  align-self: start;
+  font-family: "ABook";
+  font-weight: 500;
+  margin-bottom: 0;
+}
+#parentDiv .outlined-adornment-weight {
+  width: 100%;
+}
+#parentDiv Button {
+  align-self: flex-start;
+}
+#home {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+#home #mainp {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+#home #subp {
+  font-size: 12px;
+  font-weight: 500;
+
+  /*  margin-top: 20px; */
+  margin-right: 10px;
+  color: #000;
+}
+
+.css-q0jhri-MuiInputBase-root-MuiInput-root:after,
+.css-q0jhri-MuiInputBase-root-MuiInput-root:before {
+  display: none;
+}
+.css-1dmqq7i-MuiNativeSelect-select-MuiInputBase-input-MuiInput-input.css-1dmqq7i-MuiNativeSelect-select-MuiInputBase-input-MuiInput-input.css-1dmqq7i-MuiNativeSelect-select-MuiInputBase-input-MuiInput-input {
+  padding-bottom: 2px;
+}
+#filterSpan {
+  display: flex;
+  align-items: center;
+}
+.css-q0jhri-MuiInputBase-root-MuiInput-root {
+  font-size: 0.8rem !important;
+  color: blue !important;
+}
+
+.css-1dmqq7i-MuiNativeSelect-select-MuiInputBase-input-MuiInput-input:focus {
+  background-color: transparent !important;
+}
+.tableheading {
+  font-family: "ABlack" !important;
+}
