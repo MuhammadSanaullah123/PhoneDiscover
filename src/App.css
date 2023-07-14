@@ -113,6 +113,7 @@ Button {
 .durationp {
   font-weight: 600 !important;
   margin: 0;
+  cursor: pointer;
 }
 #pagination {
   width: 500px;
